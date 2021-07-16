@@ -6,37 +6,38 @@
 
 typedef struct projeto{
     int codigo, ano, status;
-    char titulo[20], descricao[50], gerenteResponsavel[20];
-}base_projetos;
+    char titulo[20], descricao[50], responsavel[20];
+}base_projeto;
 
 int i = 0;
 
-void cadastrarProjeto(base_projetos cadastro[MAX]);
-void listarTodos(base_projetos cadastro[MAX]);
-void listarAFazer(base_projetos cadastro[MAX]);
-void listarFazendo(base_projetos cadastro[MAX]);
-void listarConcluido(base_projetos cadastro[MAX]);
+void cadastrarProjeto(base_projeto cadastro[MAX]);
+void listarTodos(base_projeto cadastro[MAX]);
+void listarAFazer(base_projeto cadastro[MAX]);
+void listarFazendo(base_projeto cadastro[MAX]);
+void listarConcluido(base_projeto cadastro[MAX]);
 
 int main(){
     setlocale(LC_ALL, "Portuguese");
 
-    base_projetos cadastro[MAX];
+    base_projeto cadastro[MAX];
 
     int op;
 
     system("cls");
     do{
-        printf("\n*********GERENCIADOR DE PROJETOS V1.0*********\n");
-        printf("PROGRAMMED BY RAUL VICTOR VIEIRA RA:21014005-5\n\n");
+        printf("\n******** GERENCIADOR DE PROJETOS V1.0 ********\n");
+        printf("*** DEVELOPED BY RAUL VIEIRA RA:21014005-5 ***\n");
+        printf("************* UNICESUMAR - ALPII *************\n\n\n");
         printf("******************** MENU ********************\n");
         printf("* 1 - Novo Projeto                           *\n");
         printf("* 2 - Listar Todos os Projetos               *\n");
         printf("* 3 - Listar Todos os Projetos - A Fazer     *\n");
         printf("* 4 - Listar Todos os Projetos - Fazendo     *\n");
-        printf("* 5 - Listar Todos os Projetos - ConcluÃ­do   *\n");
+        printf("* 5 - Listar Todos os Projetos - Concluído   *\n");
         printf("* 0 - Sair                                   *\n");
         printf("**********************************************\n");
-        printf("<< Escolha uma opÃ§Ã£o do menu: ");
+        printf("<< Escolha uma opção do menu: ");
         scanf("%d", &op);
 
         switch(op){
@@ -52,22 +53,22 @@ int main(){
             case 4:
                 listarFazendo(cadastro);
                 break;
-             case 5:
+            case 5:
                 listarConcluido(cadastro);
                 break;
             case 0:
-                printf("\nSaindo da AplicaÃ§Ã£o...\n");
+                printf("\nSaindo da Aplicação...\n");
                 system("Pause");
                 break;
             default:
-                printf("\nOpÃ§Ã£o ivÃ¡lida!\n");
+                printf("\nOpção iválida!\n");
                 system("Pause");
         }
     }while(op != 0);
     return 0;
 }
 
-void cadastrarProjeto(base_projetos cadastro[MAX]){
+void cadastrarProjeto(base_projeto cadastro[MAX]){
     system("cls");
     printf("****************************************\n");
     printf("*             NOVO PROJETO             *\n");
@@ -77,35 +78,35 @@ void cadastrarProjeto(base_projetos cadastro[MAX]){
     while(resp == 's' && i <= MAX){
         i++;
         cadastro[i-1].codigo = i;
-        printf("\n>> CÃ³digo: %d ", i);
-        printf("\n>> Titulo do projeto: ");
+        printf("\n>> Código: %d ", i);
+        printf("\n>> Titulo: ");
         scanf(" %20[^\n]s", &cadastro[i-1].titulo);
         fflush(stdin);
-        printf(">> FaÃ§a uma breve descriÃ§Ã£o do projeto: ");
+        printf(">> Descrição: ");
         scanf(" %50[^\n]s", &cadastro[i-1].descricao);
         fflush(stdin);
-        printf(">> Ano do projeto: ");
+        printf(">> Ano: ");
         scanf("%d", &cadastro[i-1].ano);
         fflush(stdin);
-        printf(">> Status do projeto [1]-A Fazer [2]-Fazendo [3]-ConcluÃ­do: ");
+        printf(">> Status [1]-A Fazer [2]-Fazendo [3]-Concluído: ");
         scanf("%d", &cadastro[i-1].status);
         fflush(stdin);
-        printf(">> Nome do Gerente de Projetos responsÃ¡vel: ");
-        scanf(" %20[^\n]s", &cadastro[i-1].gerenteResponsavel);
+        printf(">> Responsável: ");
+        scanf(" %20[^\n]s", &cadastro[i-1].responsavel);
         fflush(stdin);
 
         if(i <= MAX){
-            printf("\n\nDeseja cadastrar novo Projeto? [s]-Sim [n]-NÃ£o: ");
+            printf("\n\nDeseja cadastrar um novo Projeto? [s]-Sim [n]-Não: ");
             fflush(stdin);
             scanf("%c", &resp);
         }else{
-            printf("\nSua base de Dados estÃ¡ cheia\n");
+            printf("\nSua base de dados está cheia\n");
             resp = 'n';
         }
     }
 }
 
-void listarTodos(base_projetos cadastro[MAX]){
+void listarTodos(base_projeto cadastro[MAX]){
     system("cls");
     printf("\n***************************************\n");
     printf("*          TODOS OS PROJETOS          *\n");
@@ -119,7 +120,7 @@ void listarTodos(base_projetos cadastro[MAX]){
             printf("\n%s", cadastro[linha].descricao);
             printf("\n%d", cadastro[linha].ano);
             printf("\n%d", cadastro[linha].status);
-            printf("\n%s", cadastro[linha].gerenteResponsavel);
+            printf("\n%s", cadastro[linha].responsavel);
             printf("\n******************************");
             linha++;
         }
@@ -130,7 +131,7 @@ void listarTodos(base_projetos cadastro[MAX]){
     system("Pause");
 }
 
-void listarAFazer(base_projetos cadastro[MAX]){
+void listarAFazer(base_projeto cadastro[MAX]){
     system("cls");
     printf("\n****************************************\n");
     printf("*           PROJETOS A FAZER           *\n");
@@ -145,7 +146,7 @@ void listarAFazer(base_projetos cadastro[MAX]){
             printf("\n%s", cadastro[j].descricao);
             printf("\n%d", cadastro[j].ano);
             printf("\n%d", cadastro[j].status);
-            printf("\n%s", cadastro[j].gerenteResponsavel);
+            printf("\n%s", cadastro[j].responsavel);
             printf("\n******************************");
             j++;
         }else{
@@ -155,7 +156,7 @@ void listarAFazer(base_projetos cadastro[MAX]){
     system("Pause");
 }
 
-void listarFazendo(base_projetos cadastro[MAX]){
+void listarFazendo(base_projeto cadastro[MAX]){
     system("cls");
     printf("\n****************************************\n");
     printf("*           PROJETOS FAZENDO           *\n");
@@ -170,7 +171,7 @@ void listarFazendo(base_projetos cadastro[MAX]){
             printf("\n%s", cadastro[j].descricao);
             printf("\n%d", cadastro[j].ano);
             printf("\n%d", cadastro[j].status);
-            printf("\n%s", cadastro[j].gerenteResponsavel);
+            printf("\n%s", cadastro[j].responsavel);
             printf("\n******************************");
             j++;
         }else{
@@ -180,7 +181,7 @@ void listarFazendo(base_projetos cadastro[MAX]){
     system("Pause");
 }
 
-void listarConcluido(base_projetos cadastro[MAX]){
+void listarConcluido(base_projeto cadastro[MAX]){
     system("cls");
     printf("\n*****************************************\n");
     printf("*          PROJETOS CONCLUIDOS          *\n");
@@ -195,7 +196,7 @@ void listarConcluido(base_projetos cadastro[MAX]){
             printf("\n%s", cadastro[j].descricao);
             printf("\n%d", cadastro[j].ano);
             printf("\n%d", cadastro[j].status);
-            printf("\n%s", cadastro[j].gerenteResponsavel);
+            printf("\n%s", cadastro[j].responsavel);
             printf("\n******************************");
             j++;
         }else{
