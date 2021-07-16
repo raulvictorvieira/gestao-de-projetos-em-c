@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <locale.h>
-#define MAX 5
+#define MAX 199
 
 typedef struct projeto{
     int codigo, ano, status;
