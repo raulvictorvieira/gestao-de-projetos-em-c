@@ -26,6 +26,8 @@ int main(){
 
     system("cls");
     do{
+        printf("\n*********GERENCIADOR DE PROJETOS V1.0*********\n");
+        printf("PROGRAMMED BY RAUL VICTOR VIEIRA RA:21014005-5\n\n");
         printf("******************** MENU ********************\n");
         printf("* 1 - Novo Projeto                           *\n");
         printf("* 2 - Listar Todos os Projetos               *\n");
